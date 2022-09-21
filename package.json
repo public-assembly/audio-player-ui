@@ -1,0 +1,34 @@
+{
+  "name": "assemble-package",
+  "version": "1.0.0",
+  "description": "NPM package boilerplate",
+  "main": "index.js",
+  "author": "Public Assembly",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "example:next": "preconstruct dev && cd examples && cd nextjs && yarn dev",
+    "example:react": "preconstruct dev && cd examples && cd react && yarn dev",
+    "build": "preconstruct build",
+    "postinstall": "preconstruct dev",
+    "publish": "yarn preconstruct build && yarn changeset publish"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@babel/preset-env": "^7.19.1",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@changesets/cli": "^2.24.4",
+    "@preconstruct/cli": "^2.2.1",
+    "process": "^0.11.10"
+  },
+  "preconstruct": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}
