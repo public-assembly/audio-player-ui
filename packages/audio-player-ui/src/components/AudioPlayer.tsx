@@ -4,42 +4,24 @@ import { AudioPlayerDisplayInfo } from "./player-content/wrappers/InfoContainer/
 import { VolSlider } from "./player-content/controls/VolSlider/VolSlider";
 
 interface AudioPlayerProps {
-  currentTime: number;
-  duration: number;
-  playing: boolean;
-  setPlaying: (playing: boolean) => void;
-  setClickedTime: (time: number) => void;
-  artistName: string;
-  trackName: string;
-  muted: boolean;
-  toggleMute: () => void;
+  id: string;
+  artist: string;
+  title: string;
+  image: string;
+  audioSrc: string;
 }
-
 export function AudioPlayer({
-  currentTime,
-  duration,
-  playing,
-  setPlaying,
-  setClickedTime,
-  artistName,
-  trackName,
-  muted,
-  toggleMute,
-}: AudioPlayerProps) {
+  // id,
+  artist,
+  title,
+}: // image,
+AudioPlayerProps) {
   return (
     <PlayerWrapper>
-      <ControlsContainer
-        playing={playing}
-        setPlaying={setPlaying}
-        duration={duration}
-        currentTime={currentTime}
-        setClickedTime={setClickedTime}
-        muted={muted}
-        toggleMute={toggleMute}
-      />
+      <ControlsContainer />
       <div className="flex justify-between items-center">
-        <AudioPlayerDisplayInfo artistName={artistName} trackName={trackName} />
-        <VolSlider muted={muted} toggleMute={toggleMute} />
+        <AudioPlayerDisplayInfo artistName={artist} trackName={title} />
+        <VolSlider />
       </div>
     </PlayerWrapper>
   );

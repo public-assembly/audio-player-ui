@@ -1,7 +1,10 @@
-export const ProgressBar = ({ duration, currentTime, setClickedTime }: any) => {
+import useAudioPlayer from "../../../../hooks/useAudioPlayer";
+
+export const ProgressBar = () => {
+  const { curTime, duration, setClickedTime } = useAudioPlayer();
   const timeLeft = () => {
-    let mins: any = Math.floor((duration - currentTime) / 60);
-    let secs: any = Math.floor((duration - currentTime) % 60);
+    let mins: any = Math.floor((duration - curTime) / 60);
+    let secs: any = Math.floor((duration - curTime) % 60);
     if (mins < 10) mins = `0${mins}`;
     if (secs < 10) secs = `0${secs}`;
     return `${mins}:${secs}`;
@@ -30,7 +33,7 @@ export const ProgressBar = ({ duration, currentTime, setClickedTime }: any) => {
         className="w-[90%] cursor-pointer"
         min={0}
         max={Math.floor(duration)}
-        value={currentTime}
+        value={curTime}
         onChange={(e) => handleTimeDrag(e.target.value)}
       />
       <span>{timeLeft()}</span>

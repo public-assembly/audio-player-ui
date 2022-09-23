@@ -1,11 +1,8 @@
 import { ImVolumeMedium, ImVolumeMute } from "react-icons/im";
+import useAudioPlayer from "../../../../hooks/useAudioPlayer";
 
-interface VolControlsProps {
-  muted: boolean;
-  toggleMute: () => void;
-}
-
-export const VolControls = ({ muted, toggleMute }: VolControlsProps) => {
+export const VolControls = () => {
+  const { muted, toggleMute } = useAudioPlayer();
   return (
     <>
       <button

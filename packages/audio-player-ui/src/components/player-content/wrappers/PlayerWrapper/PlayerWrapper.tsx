@@ -3,8 +3,6 @@ export function PlayerWrapper({
 }: {
   children?: JSX.Element | JSX.Element[];
 }) {
-  //hardcoded styles for now
-  // to be consumed by theme provider
   return (
     <div className="flex flex-col items-center z-40 fixed bottom-0 lg:bottom-5 left-0 right-0 justify-between ">
       <div className="w-[100%] lg:w-[50%]">
