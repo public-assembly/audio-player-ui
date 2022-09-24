@@ -1,20 +1,22 @@
 import { ImVolumeMedium, ImVolumeMute } from "react-icons/im";
-import useAudioPlayer from "../../../../hooks/useAudioPlayer";
 
-export const VolControls = () => {
-  const { muted, toggleMute } = useAudioPlayer();
+interface VolControlsProps {
+  isMuted: boolean;
+  toggleMute: () => void;
+}
+export const VolControls = ({ isMuted, toggleMute }: VolControlsProps) => {
   return (
     <>
       <button
         onClick={() => toggleMute()}
-        className={`${!muted ? "inline-block" : "hidden"}`}
+        className={`${!isMuted ? "inline-block" : "hidden"}`}
         aria-label="volume"
       >
         <ImVolumeMedium className="w-6 h-6" />
       </button>
       <button
         onClick={toggleMute}
-        className={muted ? "inline-block" : "hidden"}
+        className={isMuted ? "inline-block" : "hidden"}
         aria-label="muted"
       >
         <ImVolumeMute className="w-6 h-6" />

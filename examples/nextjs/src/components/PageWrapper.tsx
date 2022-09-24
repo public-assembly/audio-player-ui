@@ -1,7 +1,5 @@
 import { Header } from "./Header";
 import { AudioPlayer } from "@public-assembly/audio-player-ui";
-import { useAudioPlayer } from "@public-assembly/audio-player-ui";
-import { useEffect, useRef } from "react";
 
 type MusicNFT = {
   id: string;
@@ -26,20 +24,6 @@ export function PageWrapper({
 }: {
   children?: JSX.Element;
 }) {
-  const trackRef = useRef<HTMLAudioElement>(null);
-  const {
-    onLoad,
-    onLoadedMetadata,
-    onPlay,
-    onPause,
-    onTimeUpdate,
-    setCurrentTrack,
-  } = useAudioPlayer();
-
-  useEffect(() => {
-    setCurrentTrack(trackRef.current);
-  }, [trackRef]);
-
   return (
     <>
       <Header />
@@ -51,19 +35,6 @@ export function PageWrapper({
           image={INIT_TEST_MUSIC_NFT.image}
           audioSrc={INIT_TEST_MUSIC_NFT.audioSrc}
         />
-        <audio
-          ref={trackRef}
-          autoPlay
-          loop={false}
-          src={INIT_TEST_MUSIC_NFT.audioSrc}
-          onLoadedMetadata={onLoadedMetadata}
-          onTimeUpdate={onTimeUpdate}
-          onPlay={onPlay}
-          onPause={onPause}
-          onLoad={onLoad}
-        >
-          Your browser does not support the <code>audio</code> element.
-        </audio>
 
         {children}
       </main>

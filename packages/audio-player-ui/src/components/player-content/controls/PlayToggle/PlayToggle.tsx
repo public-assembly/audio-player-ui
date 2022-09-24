@@ -1,18 +1,23 @@
 import { GrPlayFill, GrPauseFill } from "react-icons/gr";
-import useAudioPlayer from "../../../../hooks/useAudioPlayer";
 
-export const PlayToggle = () => {
-  const { togglePlay, playing } = useAudioPlayer();
+interface PlayToggleProps {
+  pausePlayHandler: () => void;
+  playing: boolean;
+  playHandler?: () => void;
+  pauseHandler?: () => void;
+}
+
+export const PlayToggle = ({ pausePlayHandler, playing }: PlayToggleProps) => {
   return (
     <>
       <button
-        onClick={togglePlay}
+        onClick={pausePlayHandler}
         className={!playing ? "inline-block" : "hidden"}
       >
         <GrPlayFill className="w-6 h-6" />
       </button>
       <button
-        onClick={togglePlay}
+        onClick={pausePlayHandler}
         className={playing ? "inline-block" : "hidden"}
       >
         <GrPauseFill className="w-6 h-6" />
