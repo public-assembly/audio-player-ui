@@ -1,8 +1,8 @@
 import { BiSkipPrevious } from "react-icons/bi";
 
-export const Prev = () => {
+export const Prev = ({ prevSong }: any) => {
   return (
-    <button>
+    <button onClick={prevSong}>
       <BiSkipPrevious className="w-6 h-6" />
     </button>
   );

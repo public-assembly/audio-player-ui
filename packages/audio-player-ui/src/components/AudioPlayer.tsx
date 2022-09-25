@@ -2,7 +2,7 @@ import { PlayerWrapper } from "./player-content/wrappers/PlayerWrapper/PlayerWra
 import { ControlsContainer } from "./player-content/wrappers/controls-wrapper/ControlsContainer";
 import { AudioPlayerDisplayInfo } from "./player-content/wrappers/InfoContainer/InfoContainer";
 import { VolSlider } from "./player-content/controls/VolSlider/VolSlider";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAudioPlayer } from "../hooks/useAudioPlayer";
 import { VolControls } from "./player-content/controls/VolControls";
 
@@ -23,6 +23,10 @@ export function AudioPlayer({ nft, playlist }: AudioPlayerProps) {
   const { id, artist, title, image, audioSrc } = nft;
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  useEffect(() => {
+    setCurrentTrack(nft);
+  }, [nft]);
+
   const {
     pausePlayHandler,
     playHandler,
@@ -38,13 +42,16 @@ export function AudioPlayer({ nft, playlist }: AudioPlayerProps) {
     setProgress,
     volume,
     handleVolume,
-  } = useAudioPlayer(audioRef);
+    nextSong,
+    prevSong,
+    onEndHandler,
+  } = useAudioPlayer(audioRef, playlist, currentTrack, setCurrentTrack);
 
   return (
     <PlayerWrapper>
       <audio
         ref={audioRef}
-        src={audioSrc}
+        src={currentTrack ? currentTrack.audioSrc : audioSrc}
         loop={false}
         preload="auto"
         autoPlay={true}
@@ -54,10 +61,14 @@ export function AudioPlayer({ nft, playlist }: AudioPlayerProps) {
         onPause={pauseHandler}
         onTimeUpdate={timeUpdateHandler}
         onLoadedData={loadedHandler}
+        onEnded={onEndHandler}
       >
         Your browser does not support the <code>audio</code> element.
       </audio>
-      <AudioPlayerDisplayInfo artistName={artist} trackName={title} />
+      <AudioPlayerDisplayInfo
+        artistName={currentTrack ? currentTrack.artist : artist}
+        trackName={currentTrack ? currentTrack.title : title}
+      />
       <ControlsContainer
         pausePlayHandler={pausePlayHandler}
         playing={playing}
@@ -69,6 +80,8 @@ export function AudioPlayer({ nft, playlist }: AudioPlayerProps) {
         isMuted={isMuted}
         toggleMute={toggleMute}
         handleProgress={handleProgress}
+        nextSong={nextSong}
+        prevSong={prevSong}
       />
       <div className="col-span-1">
         <div className="flex items-center">

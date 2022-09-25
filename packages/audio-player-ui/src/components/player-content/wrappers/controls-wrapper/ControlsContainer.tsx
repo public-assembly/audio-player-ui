@@ -14,6 +14,8 @@ interface ControlsContainerProps {
   isMuted: boolean;
   toggleMute: () => void;
   handleProgress: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  nextSong: () => void;
+  prevSong: () => void;
 }
 
 export const ControlsContainer = ({
@@ -24,19 +26,21 @@ export const ControlsContainer = ({
   duration,
   progress,
   handleProgress,
+  nextSong,
+  prevSong,
 }: ControlsContainerProps) => {
   return (
     <div className="col-span-9">
       <div className="flex justify-between items-center w-[100%]">
         <div className="flex items-center gap-2">
-          <Prev />
+          <Prev prevSong={prevSong} />
           <PlayToggle
             pausePlayHandler={pausePlayHandler}
             playing={playing}
             playHandler={playHandler}
             pauseHandler={pauseHandler}
           />
-          <Next />
+          <Next nextSong={nextSong} />
         </div>
         <ProgressBar
           duration={duration}

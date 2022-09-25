@@ -17,9 +17,7 @@ export function PageWrapper({
 }: {
   children?: JSX.Element;
 }) {
-  const [currentNFT, setCurrentNFT] = useState<MusicNFT | null>(
-    fakePlaylist[0]
-  );
+  const [currentNFT, setCurrentNFT] = useState<MusicNFT>(fakePlaylist[0]);
   return (
     <>
       <Header />

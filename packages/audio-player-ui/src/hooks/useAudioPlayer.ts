@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 
-export function useAudioPlayer(mediaRef: any) {
+export function useAudioPlayer(
+  mediaRef: any,
+  playlist: any,
+  currentTrack: any,
+  setCurrentTrack: any
+) {
   const [playing, setPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,6 +35,29 @@ export function useAudioPlayer(mediaRef: any) {
   const pauseHandler = useCallback(() => {
     setPlaying(false);
   }, [playing, setPlaying]);
+
+  const nextSong = useCallback(() => {
+    const nextIndex = playlist.indexOf(currentTrack) + 1;
+    console.log(playlist.length);
+    if (nextIndex >= playlist.length) {
+      setCurrentTrack(playlist[0]);
+    } else {
+      setCurrentTrack(playlist[nextIndex]);
+    }
+  }, [mediaRef.current, currentTrack]);
+
+  const prevSong = useCallback(() => {
+    const prevIndex = playlist.indexOf(currentTrack) - 1;
+    if (prevIndex < 0) {
+      setCurrentTrack(playlist[playlist.length - 1]);
+    } else {
+      setCurrentTrack(playlist[prevIndex]);
+    }
+  }, [mediaRef.current, currentTrack]);
+
+  const onEndHandler = useCallback(() => {
+    nextSong();
+  }, [mediaRef.current, currentTrack]);
 
   const loadedHandler = useCallback(() => {
     if (!mediaRef.current) {
@@ -86,9 +114,6 @@ export function useAudioPlayer(mediaRef: any) {
     }
   }, [isMuted, setIsMuted]);
 
-  const nextSong = useCallback(() => {}, []);
-  const prevSong = useCallback(() => {}, []);
-
   useEffect(() => {
     isMuted
       ? (mediaRef.current.muted = true)
@@ -112,5 +137,8 @@ export function useAudioPlayer(mediaRef: any) {
     volume,
     setVolume,
     handleVolume,
+    nextSong,
+    prevSong,
+    onEndHandler,
   };
 }
