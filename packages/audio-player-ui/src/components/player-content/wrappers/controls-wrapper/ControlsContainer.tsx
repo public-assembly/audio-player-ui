@@ -1,6 +1,7 @@
 import { PlayToggle } from "../../controls/PlayToggle/PlayToggle";
 import { ProgressBar } from "../../controls/ProgressBar/ProgressBar";
-import { VolControls } from "../../controls/VolControls/VolControls";
+import { Prev } from "../../controls/PrevNext/Prev";
+import { Next } from "../../controls/PrevNext/Next";
 
 interface ControlsContainerProps {
   pausePlayHandler: () => void;
@@ -22,24 +23,27 @@ export const ControlsContainer = ({
   pauseHandler,
   duration,
   progress,
-  isMuted,
-  toggleMute,
   handleProgress,
 }: ControlsContainerProps) => {
   return (
-    <div className="flex justify-between items-center">
-      <PlayToggle
-        pausePlayHandler={pausePlayHandler}
-        playing={playing}
-        playHandler={playHandler}
-        pauseHandler={pauseHandler}
-      />
-      <ProgressBar
-        duration={duration}
-        progress={progress}
-        handleProgress={handleProgress}
-      />
-      <VolControls isMuted={isMuted} toggleMute={toggleMute} />
+    <div className="col-span-9">
+      <div className="flex justify-between items-center w-[100%]">
+        <div className="flex items-center gap-2">
+          <Prev />
+          <PlayToggle
+            pausePlayHandler={pausePlayHandler}
+            playing={playing}
+            playHandler={playHandler}
+            pauseHandler={pauseHandler}
+          />
+          <Next />
+        </div>
+        <ProgressBar
+          duration={duration}
+          progress={progress}
+          handleProgress={handleProgress}
+        />
+      </div>
     </div>
   );
 };

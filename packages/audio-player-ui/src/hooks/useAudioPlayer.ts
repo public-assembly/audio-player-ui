@@ -51,6 +51,7 @@ export function useAudioPlayer(mediaRef: any) {
     },
     [mediaRef.current]
   );
+
   const handleVolume = useCallback(
     (event: any) => {
       if (!mediaRef.current) {
@@ -84,6 +85,9 @@ export function useAudioPlayer(mediaRef: any) {
       mediaRef.current.volume = 0.75;
     }
   }, [isMuted, setIsMuted]);
+
+  const nextSong = useCallback(() => {}, []);
+  const prevSong = useCallback(() => {}, []);
 
   useEffect(() => {
     isMuted

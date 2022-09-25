@@ -1,22 +1,15 @@
 import { Header } from "./Header";
 import { AudioPlayer } from "@public-assembly/audio-player-ui";
+import { fakePlaylist } from "../fakePlaylist";
+import { useState } from "react";
 
-type MusicNFT = {
+export type MusicNFT = {
   id: string;
   artist: string;
   title: string;
   image: string;
   audioSrc: string;
 };
-//FAKE DATA
-const INIT_TEST_MUSIC_NFT = {
-  id: "1",
-  artist: "Public Assembly",
-  title: "Test NFT",
-  image: "https://i.imgur.com/1Q9ZQ9r.png",
-  audioSrc:
-    "https://arena-attachments.s3.amazonaws.com/18170014/30a9e158e4001a12a1cb9e2c2f05586a.wav?1663852383",
-} as MusicNFT;
 
 export function PageWrapper({
   children,
@@ -24,17 +17,23 @@ export function PageWrapper({
 }: {
   children?: JSX.Element;
 }) {
+  const [currentNFT, setCurrentNFT] = useState<MusicNFT | null>(
+    fakePlaylist[0]
+  );
   return (
     <>
       <Header />
       <main {...props} className="p-4">
-        <AudioPlayer
-          id={INIT_TEST_MUSIC_NFT.id}
-          artist={INIT_TEST_MUSIC_NFT.artist}
-          title={INIT_TEST_MUSIC_NFT.title}
-          image={INIT_TEST_MUSIC_NFT.image}
-          audioSrc={INIT_TEST_MUSIC_NFT.audioSrc}
-        />
+        {fakePlaylist.map((nft) => (
+          <div
+            key={nft.id}
+            className=" p-3 border cursor-pointer mb-4"
+            onClick={() => setCurrentNFT(nft)}
+          >
+            {nft.artist} - {nft.title}
+          </div>
+        ))}
+        <AudioPlayer playlist={fakePlaylist} nft={currentNFT} />
 
         {children}
       </main>

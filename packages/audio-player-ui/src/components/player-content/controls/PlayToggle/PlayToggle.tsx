@@ -1,5 +1,4 @@
 import { GrPlayFill, GrPauseFill } from "react-icons/gr";
-
 interface PlayToggleProps {
   pausePlayHandler: () => void;
   playing: boolean;

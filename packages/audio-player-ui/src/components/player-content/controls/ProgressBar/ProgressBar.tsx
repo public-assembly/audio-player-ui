@@ -18,10 +18,10 @@ export const ProgressBar = ({
   };
 
   return (
-    <span className="w-full px-6 flex items-center gap-4 mx-auto">
+    <span className="w-full px-6 flex items-center gap-4 ">
       <input
         type="range"
-        className="w-[90%] cursor-pointer"
+        className="w-[100%] cursor-pointer"
         min="0"
         value={progress}
         max={Math.floor(duration)}
