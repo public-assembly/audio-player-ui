@@ -1,5 +1,12 @@
 import { useState } from "react";
 
+/**
+ * We should memoize all the handler functions with react useCallback
+ * https://dmitripavlutin.com/dont-overuse-react-usecallback/
+ * example from similar set of handlers:
+ * https://github.com/dblodorn/blocksyncer/blob/main/%40media-player/useMediaPlayer.tsx
+ */
+
 export function useAudioPlayer() {
   const [currentTrack, setCurrentTrack] = useState<HTMLAudioElement | null>(
     null
