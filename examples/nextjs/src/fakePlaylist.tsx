@@ -1,4 +1,3 @@
-import type { MusicNFT } from "./components/PageWrapper";
 export const fakePlaylist = [
   {
     id: "1",
@@ -24,4 +23,4 @@ export const fakePlaylist = [
     audioSrc:
       "https://radio-strapi-bucket.s3.sa-east-1.amazonaws.com/51_4c5c912f6d.mp3",
   },
-] as MusicNFT[];
+];

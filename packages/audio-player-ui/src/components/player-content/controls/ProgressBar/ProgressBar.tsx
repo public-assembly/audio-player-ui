@@ -27,7 +27,7 @@ export const ProgressBar = ({
         max={Math.floor(duration)}
         onChange={(e: any) => handleProgress(e as any)}
       />
-      <span>{timeLeft()}</span>
+      <span className=" tabular-nums">{timeLeft()}</span>
     </span>
   );
 };

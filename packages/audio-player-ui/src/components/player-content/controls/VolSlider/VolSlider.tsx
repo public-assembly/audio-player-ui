@@ -12,7 +12,7 @@ export const VolSlider = ({ volume, handleVolume }: VolControlsProps) => {
       max={1}
       step={0.01}
       value={volume}
-      className="cursor-pointer w-20"
+      className="cursor-pointer w-20 hidden sm:block"
       onChange={(e) => handleVolume(e as any)}
     />
   );

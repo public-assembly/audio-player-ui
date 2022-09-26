@@ -1,17 +1,42 @@
-import { useCallback, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-export function useAudioPlayer(
-  mediaRef: any,
-  playlist: any,
-  currentTrack: any,
-  setCurrentTrack: any
-) {
+import { AudioPlayerContextType } from "../types/AudioPlayerContextType";
+
+interface props {
+  children: JSX.Element | JSX.Element[];
+  pl: any;
+  nft: any;
+}
+export const AudioPlayerContext = createContext<AudioPlayerContextType>(
+  {} as AudioPlayerContextType
+);
+
+export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
+  //STATE
   const [playing, setPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [duration, setDuration] = useState(0);
   const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(0.75);
+  const [playlist, setPlaylist] = useState(pl);
+  const [currentTrack, setCurrentTrack] = useState(playlist[0]);
+
+  //REF
+  const mediaRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    if (nft !== currentTrack) {
+      setCurrentTrack(nft);
+    }
+  }, [nft]);
 
   useEffect(() => {
     if (!mediaRef.current) {
@@ -37,6 +62,9 @@ export function useAudioPlayer(
   }, [playing, setPlaying]);
 
   const nextSong = useCallback(() => {
+    if (!currentTrack) {
+      return;
+    }
     const nextIndex = playlist.indexOf(currentTrack) + 1;
     if (nextIndex >= playlist.length) {
       setCurrentTrack(playlist[0]);
@@ -46,6 +74,9 @@ export function useAudioPlayer(
   }, [mediaRef.current, currentTrack]);
 
   const prevSong = useCallback(() => {
+    if (!currentTrack) {
+      return;
+    }
     const prevIndex = playlist.indexOf(currentTrack) - 1;
     if (prevIndex < 0) {
       setCurrentTrack(playlist[playlist.length - 1]);
@@ -108,37 +139,74 @@ export function useAudioPlayer(
     if (!isMuted) {
       setVolume(0);
     } else setVolume(0.75);
-    if (volume === 0 && isMuted) {
+    if (volume === 0 && isMuted && mediaRef.current) {
       mediaRef.current.volume = 0.75;
     }
   }, [isMuted, setIsMuted]);
 
   useEffect(() => {
-    isMuted
-      ? (mediaRef.current.muted = true)
-      : (mediaRef.current.muted = false);
+    if (mediaRef.current) {
+      isMuted
+        ? (mediaRef.current.muted = true)
+        : (mediaRef.current.muted = false);
+    }
   }, [isMuted, mediaRef]);
 
-  return {
-    pausePlayHandler,
-    playHandler,
-    pauseHandler,
-    loadedHandler,
-    timeUpdateHandler,
-    toggleMute,
-    isMuted,
-    playing,
-    isLoaded,
-    duration,
-    progress,
-    setProgress,
-    handleProgress,
-    volume,
-    setVolume,
-    handleVolume,
-    nextSong,
-    prevSong,
-    onEndHandler,
-    currentTrack,
-  };
+  return (
+    <AudioPlayerContext.Provider
+      value={{
+        playing,
+        setPlaying,
+        isMuted,
+        setIsMuted,
+        volume,
+        setVolume,
+        progress,
+        setProgress,
+        duration,
+        setDuration,
+        currentTrack,
+        setCurrentTrack,
+        playlist,
+        setPlaylist,
+        pausePlayHandler,
+        playHandler,
+        pauseHandler,
+        loadedHandler,
+        timeUpdateHandler,
+        toggleMute,
+        handleProgress,
+        handleVolume,
+        nextSong,
+        prevSong,
+        onEndHandler,
+        isLoaded,
+        setIsLoaded,
+      }}
+    >
+      <audio
+        ref={mediaRef}
+        src={currentTrack ? currentTrack?.audioSrc : ""}
+        loop={false}
+        preload="auto"
+        autoPlay={true}
+        muted={isMuted}
+        playsInline
+        onPlay={playHandler}
+        onPause={pauseHandler}
+        onTimeUpdate={timeUpdateHandler}
+        onLoadedData={loadedHandler}
+        onEnded={onEndHandler}
+      >
+        Your browser does not support the <code>audio</code> element.
+      </audio>
+
+      {children}
+    </AudioPlayerContext.Provider>
+  );
+};
+
+export function usePlayerContext() {
+  const playerContext = useContext(AudioPlayerContext);
+  return playerContext;
 }
