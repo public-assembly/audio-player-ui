@@ -1,15 +1,10 @@
-import { Header } from "./Header";
-import { AudioPlayer } from "@public-assembly/audio-player-ui";
-import { fakePlaylist } from "../fakePlaylist";
-import { useState } from "react";
+import { Header } from './Header'
+import { AudioPlayer } from '@public-assembly/audio-player-ui'
+import { fakePlaylist } from '../fakePlaylist'
+import { useState } from 'react'
 
-export function PageWrapper({
-  children,
-  ...props
-}: {
-  children?: JSX.Element;
-}) {
-  const [nft, setNFT] = useState(fakePlaylist[0]);
+export function PageWrapper({ children, ...props }: { children?: JSX.Element }) {
+  const [nft, setNFT] = useState(fakePlaylist[0])
 
   return (
     <>
@@ -18,9 +13,8 @@ export function PageWrapper({
         {fakePlaylist.map((nft) => (
           <div
             key={nft.id}
-            className=" p-3 border cursor-pointer mb-4"
-            onClick={() => setNFT(nft)}
-          >
+            className=" mb-4 cursor-pointer border p-3"
+            onClick={() => setNFT(nft)}>
             {nft.artist} - {nft.title}
           </div>
         ))}
@@ -29,5 +23,5 @@ export function PageWrapper({
         {children}
       </main>
     </>
-  );
+  )
 }

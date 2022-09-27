@@ -1,1 +1,1 @@
-export { VolSlider } from "./VolSlider";
+export { VolSlider } from './VolSlider'

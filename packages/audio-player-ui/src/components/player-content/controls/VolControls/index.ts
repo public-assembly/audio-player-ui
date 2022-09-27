@@ -1,1 +1,1 @@
-export { VolControls } from "./VolControls";
+export { VolControls } from './VolControls'

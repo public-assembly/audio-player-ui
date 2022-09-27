@@ -1,2 +1,2 @@
-export { Next } from "./Next";
-export { Prev } from "./Prev";
+export { Next } from './Next'
+export { Prev } from './Prev'

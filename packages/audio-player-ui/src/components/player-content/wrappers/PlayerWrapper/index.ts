@@ -1,1 +1,1 @@
-export { PlayerWrapper } from "./PlayerWrapper";
+export { PlayerWrapper } from './PlayerWrapper'
