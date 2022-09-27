@@ -7,8 +7,8 @@ export const Prev = ({ prevSong }: any) => {
     return null;
   }
   return (
-    <button onClick={prevSong}>
-      <BiSkipPrevious className="w-6 h-6" />
+    <button onClick={prevSong} className="pa-audio-player__prev">
+      <BiSkipPrevious className="pa-audio-player__prev-icon w-6 h-6" />
     </button>
   );
 };

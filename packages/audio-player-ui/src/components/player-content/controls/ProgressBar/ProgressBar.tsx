@@ -18,16 +18,16 @@ export const ProgressBar = ({
   };
 
   return (
-    <span className="w-full px-6 flex items-center gap-4 ">
+    <span className="pa-audio-player__progress-wrapper w-full px-6 flex items-center gap-4">
       <input
         type="range"
-        className="w-[100%] cursor-pointer"
+        className="pa-audio-player__progress-range w-[100%] cursor-pointer"
         min="0"
         value={progress}
         max={Math.floor(duration)}
         onChange={(e: any) => handleProgress(e as any)}
       />
-      <span className=" tabular-nums">{timeLeft()}</span>
+      <span className="pa-audio-player__progress-time-left tabular-nums">{timeLeft()}</span>
     </span>
   );
 };
