@@ -3157,6 +3157,15 @@
   dependencies:
     "@walletconnect/window-getters" "^1.0.0"
 
+"@zoralabs/eslint-config@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@zoralabs/eslint-config/-/eslint-config-0.0.1.tgz#a3f09032dab81a70123ae25ba4b0f2e777536bfa"
+  integrity sha512-6677I4aBVlN/HVfB/Kc+yjXpD7mowXyMafh/tpxnF0aXv8/kuW08WkvIuww1Yh2Be836Hv7/vY06IAd2rizE3Q==
+  dependencies:
+    eslint-config-next "^12.3.1"
+    eslint-config-prettier "^8.5.0"
+    eslint-plugin-react "^7.31.8"
+
 "@zoralabs/nft-hooks@^1.1.9":
   version "1.1.9"
   resolved "https://registry.yarnpkg.com/@zoralabs/nft-hooks/-/nft-hooks-1.1.9.tgz#d86b1602ed251df271cc9ce77ed2f7ec17e5c4b0"
@@ -4605,7 +4614,7 @@ eslint-plugin-react-hooks@^4.5.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.6.0.tgz#4c3e697ad95b77e93f8646aaa1630c1ba607edd3"
   integrity sha512-oFc7Itz9Qxh2x4gNHStv3BqJq54ExXmfC+a1NjAta66IAN87Wu0R/QArgIS9qKzX3dXKPI9H5crl9QchNMY9+g==
 
-eslint-plugin-react@^7.29.4, eslint-plugin-react@^7.31.7:
+eslint-plugin-react@^7.29.4, eslint-plugin-react@^7.31.7, eslint-plugin-react@^7.31.8:
   version "7.31.8"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.31.8.tgz#3a4f80c10be1bcbc8197be9e8b641b2a3ef219bf"
   integrity sha512-5lBTZmgQmARLLSYiwI71tiGVTLUuqXantZM6vlSY39OaDSV0M7+32K5DnLkmFrwTe+Ksz0ffuLUC91RUviVZfw==

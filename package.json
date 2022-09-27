@@ -32,6 +32,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@changesets/cli": "^2.24.4",
     "@preconstruct/cli": "^2.2.1",
+    "@zoralabs/eslint-config": "^0.0.1",
     "buffer": "^6.0.3",
     "eslint": "^8.24.0",
     "eslint-config-next": "^12.3.1",
@@ -48,5 +49,27 @@
     "packages": [
       "packages/*"
     ]
-  }
+  },
+  "lint-staged": {
+    "apps/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "packages/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ],
+    "**/*.{ts,tsx}": [
+      "tsc-files --noEmit"
+    ]
+  },
+  "engines": {
+    "node": "^14.13.1 || >=16.0.0",
+    "yarn": ">=1.22.0",
+    "npm": "please-use-yarn"
+  },
+  "packageManager": "yarn@1.22.1"
 }
