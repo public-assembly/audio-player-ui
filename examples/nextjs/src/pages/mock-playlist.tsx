@@ -3,13 +3,13 @@ import { fakePlaylist } from "../fakePlaylist";
 import { useState } from "react";
 import { RawDisplayer } from "../components";
 
-function Page() {
+function MockPlaylistPage() {
   const [nft, setNFT] = useState(fakePlaylist[0]);
   
   return (
     <section className="flex flex-col gap-4">
       <div>
-        <h1 className="text-xl mb-4">Consuming Curation Playlist</h1>
+        <h1 className="text-xl mb-4">Consuming Mock Playlist</h1>
         <hr className="border border-b-0 border-dashed"/>
       </div>
       <RawDisplayer data={fakePlaylist} />
@@ -27,4 +27,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default MockPlaylistPage;
