@@ -1,10 +1,5 @@
-import { PlayToggle } from '../../controls/PlayToggle/PlayToggle'
-import { ProgressBar } from '../../controls/ProgressBar/ProgressBar'
-import { Prev } from '../../controls/PrevNext/Prev'
-import { Next } from '../../controls/PrevNext/Next'
-import { VolControls } from '../../controls/VolControls'
-import { VolSlider } from '../../controls/VolSlider'
-import { usePlayerContext } from '../../../../context/AudioPlayerContext'
+import { PlayToggle, ProgressBar, Prev, Next, VolControls, VolSlider } from '../controls'
+import { usePlayerContext } from '../../context/AudioPlayerContext'
 
 export const ControlsContainer = () => {
   const {

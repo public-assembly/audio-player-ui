@@ -1,4 +1,4 @@
-import { usePlayerContext } from '../../../../context/AudioPlayerContext'
+import { usePlayerContext } from '../../context/AudioPlayerContext'
 
 export const AudioPlayerDisplayInfo = ({}) => {
   const { currentTrack } = usePlayerContext()

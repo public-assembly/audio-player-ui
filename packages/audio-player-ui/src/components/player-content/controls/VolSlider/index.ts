@@ -1,1 +1,0 @@
-export { VolSlider } from './VolSlider'

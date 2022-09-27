@@ -1,11 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React from 'react'
 
 import { AudioPlayerContextType } from '../types/AudioPlayerContextType'
 
@@ -14,31 +7,31 @@ interface props {
   pl: any
   nft: any
 }
-export const AudioPlayerContext = createContext<AudioPlayerContextType>(
+export const AudioPlayerContext = React.createContext<AudioPlayerContextType>(
   {} as AudioPlayerContextType
 )
 
 export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
   //STATE
-  const [playing, setPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [duration, setDuration] = useState(0)
-  const [progress, setProgress] = useState(0)
-  const [volume, setVolume] = useState(0.75)
-  const [playlist, setPlaylist] = useState(pl)
-  const [currentTrack, setCurrentTrack] = useState(playlist[0])
+  const [playing, setPlaying] = React.useState(false)
+  const [isMuted, setIsMuted] = React.useState(false)
+  const [isLoaded, setIsLoaded] = React.useState(false)
+  const [duration, setDuration] = React.useState(0)
+  const [progress, setProgress] = React.useState(0)
+  const [volume, setVolume] = React.useState(0.75)
+  const [playlist, setPlaylist] = React.useState(pl)
+  const [currentTrack, setCurrentTrack] = React.useState(playlist[0])
 
   //REF
-  const mediaRef = useRef<HTMLAudioElement>(null)
+  const mediaRef = React.useRef<HTMLAudioElement>(null)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (nft !== currentTrack) {
       setCurrentTrack(nft)
     }
   }, [nft])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!mediaRef.current) {
       return
     }
@@ -49,19 +42,19 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
     }
   }, [playing])
 
-  const pausePlayHandler = useCallback(() => {
+  const pausePlayHandler = React.useCallback(() => {
     setPlaying(!playing)
   }, [playing, setPlaying])
 
-  const playHandler = useCallback(() => {
+  const playHandler = React.useCallback(() => {
     setPlaying(true)
   }, [playing, setPlaying])
 
-  const pauseHandler = useCallback(() => {
+  const pauseHandler = React.useCallback(() => {
     setPlaying(false)
   }, [playing, setPlaying])
 
-  const nextSong = useCallback(() => {
+  const nextSong = React.useCallback(() => {
     if (!currentTrack) {
       return
     }
@@ -73,7 +66,7 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
     }
   }, [mediaRef.current, currentTrack])
 
-  const prevSong = useCallback(() => {
+  const prevSong = React.useCallback(() => {
     if (!currentTrack) {
       return
     }
@@ -85,11 +78,11 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
     }
   }, [mediaRef.current, currentTrack])
 
-  const onEndHandler = useCallback(() => {
+  const onEndHandler = React.useCallback(() => {
     nextSong()
   }, [mediaRef.current, currentTrack])
 
-  const loadedHandler = useCallback(() => {
+  const loadedHandler = React.useCallback(() => {
     if (!mediaRef.current) {
       return
     }
@@ -98,7 +91,7 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
     setIsLoaded(true)
   }, [])
 
-  const handleProgress = useCallback(
+  const handleProgress = React.useCallback(
     (event: any) => {
       if (!mediaRef.current) {
         return
@@ -110,7 +103,7 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
     [mediaRef.current]
   )
 
-  const handleVolume = useCallback(
+  const handleVolume = React.useCallback(
     (event: any) => {
       if (!mediaRef.current) {
         return
@@ -125,7 +118,7 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
     [mediaRef.current]
   )
 
-  const timeUpdateHandler = useCallback(() => {
+  const timeUpdateHandler = React.useCallback(() => {
     if (!mediaRef.current) {
       return
     }
@@ -134,7 +127,7 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
 
   //Instead of setting the volume to 0.75 create a new state
   //to store the previous volume
-  const toggleMute = useCallback(() => {
+  const toggleMute = React.useCallback(() => {
     setIsMuted(!isMuted)
     if (!isMuted) {
       setVolume(0)
@@ -144,7 +137,7 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
     }
   }, [isMuted, setIsMuted])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (mediaRef.current) {
       isMuted ? (mediaRef.current.muted = true) : (mediaRef.current.muted = false)
     }
@@ -203,6 +196,6 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
 }
 
 export function usePlayerContext() {
-  const playerContext = useContext(AudioPlayerContext)
+  const playerContext = React.useContext(AudioPlayerContext)
   return playerContext
 }
