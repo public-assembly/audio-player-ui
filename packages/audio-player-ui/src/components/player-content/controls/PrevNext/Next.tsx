@@ -7,8 +7,8 @@ export const Next = ({ nextSong }: any) => {
     return null;
   }
   return (
-    <button onClick={nextSong}>
-      <BiSkipNext className="w-6 h-6" />
+    <button onClick={nextSong} className="pa-audio-player__next">
+      <BiSkipNext className="pa-audio-player__next-icon w-6 h-6" />
     </button>
   );
 };

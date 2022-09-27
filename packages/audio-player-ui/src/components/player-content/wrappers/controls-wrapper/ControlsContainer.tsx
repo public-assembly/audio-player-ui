@@ -23,9 +23,9 @@ export const ControlsContainer = () => {
     handleVolume,
   } = usePlayerContext();
   return (
-    <div className="col-span-6 lg:col-span-10">
-      <div className="flex justify-between items-center w-[100%]">
-        <div className="flex items-center gap-2">
+    <div className="pa-audio-player__controls col-span-6 lg:col-span-10">
+      <div className="pa-audio-player__controls-wrapper flex justify-between items-center w-[100%]">
+        <div className="pa-audio-player__controls-play-pause-prev-next flex items-center gap-2">
           <Prev prevSong={prevSong} />
           <PlayToggle
             pausePlayHandler={pausePlayHandler}

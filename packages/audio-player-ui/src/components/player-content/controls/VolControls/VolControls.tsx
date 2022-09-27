@@ -9,17 +9,17 @@ export const VolControls = ({ isMuted, toggleMute }: VolControlsProps) => {
     <>
       <button
         onClick={() => toggleMute()}
-        className={`${!isMuted ? "inline-block" : "hidden"}`}
+        className={`pa-audio-player__volume-controls-volume ${!isMuted ? "inline-block" : "hidden"}`}
         aria-label="volume"
       >
-        <ImVolumeMedium className="w-6 h-6" />
+        <ImVolumeMedium className="pa-audio-player__volume-controls-volume-icon w-6 h-6" />
       </button>
       <button
         onClick={toggleMute}
-        className={isMuted ? "inline-block" : "hidden"}
+        className={`pa-audio-player__volume-controls-muted ${isMuted ? "inline-block" : "hidden"}`}
         aria-label="muted"
       >
-        <ImVolumeMute className="w-6 h-6" />
+        <ImVolumeMute className="pa-audio-player__volume-controls-muted-icon w-6 h-6" />
       </button>
     </>
   );
