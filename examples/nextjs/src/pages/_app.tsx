@@ -1,7 +1,7 @@
-import './../styles/globals.css'
-import type { AppProps } from 'next/app'
-import NextHead from 'next/head'
-import { AppWrapper, PageWrapper } from './../components'
+import "./../styles/globals.css";
+import type { AppProps } from "next/app";
+import NextHead from "next/head";
+import { AppWrapper, PageWrapper } from "./../components";
 
 function ExampleApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,6 +15,6 @@ function ExampleApp({ Component, pageProps }: AppProps) {
         </PageWrapper>
       </AppWrapper>
     </>
-  )
+  );
 }
-export default ExampleApp
+export default ExampleApp;

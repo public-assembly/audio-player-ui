@@ -1,0 +1,1 @@
+export { VolSlider } from "./VolSlider";
