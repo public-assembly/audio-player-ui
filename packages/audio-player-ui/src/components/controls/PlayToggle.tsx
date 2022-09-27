@@ -1,4 +1,8 @@
+// @ts-ignore:next-line
+import * as React from 'react'
+
 import { GrPlayFill, GrPauseFill } from 'react-icons/gr'
+
 interface PlayToggleProps {
   pausePlayHandler: () => void
   playing: boolean

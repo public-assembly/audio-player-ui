@@ -1,3 +1,6 @@
+// @ts-ignore:next-line
+import * as React from 'react'
+
 import { usePlayerContext } from '../../context/AudioPlayerContext'
 
 export const AudioPlayerDisplayInfo = ({}) => {

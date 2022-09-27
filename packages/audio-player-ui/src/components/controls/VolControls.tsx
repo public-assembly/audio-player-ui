@@ -1,3 +1,6 @@
+// @ts-ignore:next-line
+import * as React from 'react'
+
 import { ImVolumeMedium, ImVolumeMute } from 'react-icons/im'
 
 interface VolControlsProps {

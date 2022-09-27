@@ -1,3 +1,6 @@
+// @ts-ignore:next-line
+import * as React from 'react'
+
 import { PlayerWrapper, ControlsContainer, AudioPlayerDisplayInfo } from './wrappers'
 import { AudioPlayerContextProvider } from '../context/AudioPlayerContext'
 

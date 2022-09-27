@@ -1,3 +1,6 @@
+// @ts-ignore:next-line
+import * as React from 'react'
+
 import { PlayToggle, ProgressBar, Prev, Next, VolControls, VolSlider } from '../controls'
 import { usePlayerContext } from '../../context/AudioPlayerContext'
 
