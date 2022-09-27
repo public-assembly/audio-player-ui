@@ -11,15 +11,15 @@ export const PlayToggle = ({ pausePlayHandler, playing }: PlayToggleProps) => {
     <>
       <button
         onClick={pausePlayHandler}
-        className={!playing ? "inline-block" : "hidden"}
+        className={`pa-audio-player__play-button ${!playing ? "inline-block" : "hidden"}`}
       >
-        <GrPlayFill className="w-6 h-6" />
+        <GrPlayFill className="pa-audio-player__play-icon w-6 h-6" />
       </button>
       <button
         onClick={pausePlayHandler}
-        className={playing ? "inline-block" : "hidden"}
+        className={`pa-audio-player__pause-button ${playing ? "inline-block" : "hidden"}`}
       >
-        <GrPauseFill className="w-6 h-6" />
+        <GrPauseFill className="pa-audio-player__pause-icon w-6 h-6" />
       </button>
     </>
   );
