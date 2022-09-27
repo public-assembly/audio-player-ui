@@ -1,1 +1,1 @@
-export { AudioPlayerDisplayInfo } from "./InfoContainer";
+export { AudioPlayerDisplayInfo } from './InfoContainer'

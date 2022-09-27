@@ -1,8 +1,8 @@
-import { usePlayerContext } from "../../../../context/AudioPlayerContext";
+import { usePlayerContext } from '../../../../context/AudioPlayerContext'
 
 export const AudioPlayerDisplayInfo = ({}) => {
-  const { currentTrack } = usePlayerContext();
-  const { artist, title } = currentTrack;
+  const { currentTrack } = usePlayerContext()
+  const { artist, title } = currentTrack
   return (
     <div className="pa-audio-player__info-container col-span-2 ">
       <div className="pa-audio-player__info-container-items flex items-center">
@@ -11,5 +11,5 @@ export const AudioPlayerDisplayInfo = ({}) => {
         <span className="pa-audio-player__info-container-title truncate">{title}</span>
       </div>
     </div>
-  );
-};
+  )
+}

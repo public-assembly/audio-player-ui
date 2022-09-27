@@ -1,1 +1,1 @@
-export { PlayToggle } from "./PlayToggle";
+export { PlayToggle } from './PlayToggle'
