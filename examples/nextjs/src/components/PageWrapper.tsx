@@ -1,7 +1,5 @@
 import { Header } from "./Header";
 
-
-
 export function PageWrapper({
   children,
   ...props
@@ -17,5 +15,5 @@ export function PageWrapper({
         {children}
       </main>
     </>
-  );
+  )
 }

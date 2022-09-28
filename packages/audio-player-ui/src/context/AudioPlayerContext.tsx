@@ -1,156 +1,147 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import * as React from 'react'
 
-import { AudioPlayerContextType } from "../types/AudioPlayerContextType";
+import { AudioPlayerContextType } from '../types/AudioPlayerContextType'
 
 interface props {
-  children: JSX.Element | JSX.Element[];
-  pl: any;
-  nft: any;
+  children: JSX.Element | JSX.Element[]
+  pl: any
+  nft: any
 }
-export const AudioPlayerContext = createContext<AudioPlayerContextType>(
+export const AudioPlayerContext = React.createContext<AudioPlayerContextType>(
   {} as AudioPlayerContextType
-);
+)
 
 export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
   //STATE
-  const [playing, setPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [volume, setVolume] = useState(0.75);
-  const [playlist, setPlaylist] = useState(pl);
-  const [currentTrack, setCurrentTrack] = useState(playlist[0]);
+  const [playing, setPlaying] = React.useState(false)
+  const [isMuted, setIsMuted] = React.useState(false)
+  const [isLoaded, setIsLoaded] = React.useState(false)
+  const [duration, setDuration] = React.useState(0)
+  const [progress, setProgress] = React.useState(0)
+  const [volume, setVolume] = React.useState(0.75)
+  const [playlist, setPlaylist] = React.useState(pl)
+  const [currentTrack, setCurrentTrack] = React.useState(playlist[0])
 
   //REF
-  const mediaRef = useRef<HTMLAudioElement>(null);
+  const mediaRef = React.useRef<HTMLAudioElement>(null)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (nft !== currentTrack) {
-      setCurrentTrack(nft);
+      setCurrentTrack(nft)
     }
-  }, [nft]);
+  }, [nft])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!mediaRef.current) {
-      return;
+      return
     }
     if (playing) {
-      mediaRef.current.play();
+      mediaRef.current.play()
     } else {
-      mediaRef.current.pause();
+      mediaRef.current.pause()
     }
-  }, [playing]);
+  }, [playing])
 
-  const pausePlayHandler = useCallback(() => {
-    setPlaying(!playing);
-  }, [playing, setPlaying]);
+  const pausePlayHandler = React.useCallback(() => {
+    setPlaying(!playing)
+  }, [playing, setPlaying])
 
-  const playHandler = useCallback(() => {
-    setPlaying(true);
-  }, [playing, setPlaying]);
+  const playHandler = React.useCallback(() => {
+    setPlaying(true)
+  }, [playing, setPlaying])
 
-  const pauseHandler = useCallback(() => {
-    setPlaying(false);
-  }, [playing, setPlaying]);
+  const pauseHandler = React.useCallback(() => {
+    setPlaying(false)
+  }, [playing, setPlaying])
 
-  const nextSong = useCallback(() => {
+  const nextSong = React.useCallback(() => {
     if (!currentTrack) {
-      return;
+      return
     }
-    const nextIndex = playlist.indexOf(currentTrack) + 1;
+    const nextIndex = playlist.indexOf(currentTrack) + 1
     if (nextIndex >= playlist.length) {
-      setCurrentTrack(playlist[0]);
+      setCurrentTrack(playlist[0])
     } else {
-      setCurrentTrack(playlist[nextIndex]);
+      setCurrentTrack(playlist[nextIndex])
     }
-  }, [mediaRef.current, currentTrack]);
+  }, [mediaRef.current, currentTrack])
 
-  const prevSong = useCallback(() => {
+  const prevSong = React.useCallback(() => {
     if (!currentTrack) {
-      return;
+      return
     }
-    const prevIndex = playlist.indexOf(currentTrack) - 1;
+    const prevIndex = playlist.indexOf(currentTrack) - 1
     if (prevIndex < 0) {
-      setCurrentTrack(playlist[playlist.length - 1]);
+      setCurrentTrack(playlist[playlist.length - 1])
     } else {
-      setCurrentTrack(playlist[prevIndex]);
+      setCurrentTrack(playlist[prevIndex])
     }
-  }, [mediaRef.current, currentTrack]);
+  }, [mediaRef.current, currentTrack])
 
-  const onEndHandler = useCallback(() => {
-    nextSong();
-  }, [mediaRef.current, currentTrack]);
+  const onEndHandler = React.useCallback(() => {
+    nextSong()
+  }, [mediaRef.current, currentTrack])
 
-  const loadedHandler = useCallback(() => {
+  const loadedHandler = React.useCallback(() => {
     if (!mediaRef.current) {
-      return;
+      return
     }
-    setDuration(mediaRef.current.duration);
-    setProgress(mediaRef.current.currentTime);
-    setIsLoaded(true);
-  }, []);
+    setDuration(mediaRef.current.duration)
+    setProgress(mediaRef.current.currentTime)
+    setIsLoaded(true)
+  }, [])
 
-  const handleProgress = useCallback(
+  const handleProgress = React.useCallback(
     (event: any) => {
       if (!mediaRef.current) {
-        return;
+        return
       }
-      const manualChange = Number(event.target.value);
-      mediaRef.current.currentTime = manualChange;
-      setProgress(manualChange);
+      const manualChange = Number(event.target.value)
+      mediaRef.current.currentTime = manualChange
+      setProgress(manualChange)
     },
     [mediaRef.current]
-  );
+  )
 
-  const handleVolume = useCallback(
+  const handleVolume = React.useCallback(
     (event: any) => {
       if (!mediaRef.current) {
-        return;
+        return
       }
-      const manualChange = Number(event.target.value);
-      mediaRef.current.volume = manualChange;
+      const manualChange = Number(event.target.value)
+      mediaRef.current.volume = manualChange
       if (manualChange === 0) {
-        setIsMuted(true);
-      } else setIsMuted(false);
-      setVolume(manualChange);
+        setIsMuted(true)
+      } else setIsMuted(false)
+      setVolume(manualChange)
     },
     [mediaRef.current]
-  );
+  )
 
-  const timeUpdateHandler = useCallback(() => {
+  const timeUpdateHandler = React.useCallback(() => {
     if (!mediaRef.current) {
-      return;
+      return
     }
-    setProgress(mediaRef.current.currentTime);
-  }, [mediaRef.current]);
+    setProgress(mediaRef.current.currentTime)
+  }, [mediaRef.current])
 
   //Instead of setting the volume to 0.75 create a new state
   //to store the previous volume
-  const toggleMute = useCallback(() => {
-    setIsMuted(!isMuted);
+  const toggleMute = React.useCallback(() => {
+    setIsMuted(!isMuted)
     if (!isMuted) {
-      setVolume(0);
-    } else setVolume(0.75);
+      setVolume(0)
+    } else setVolume(0.75)
     if (volume === 0 && isMuted && mediaRef.current) {
-      mediaRef.current.volume = 0.75;
+      mediaRef.current.volume = 0.75
     }
-  }, [isMuted, setIsMuted]);
+  }, [isMuted, setIsMuted])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (mediaRef.current) {
-      isMuted
-        ? (mediaRef.current.muted = true)
-        : (mediaRef.current.muted = false);
+      isMuted ? (mediaRef.current.muted = true) : (mediaRef.current.muted = false)
     }
-  }, [isMuted, mediaRef]);
+  }, [isMuted, mediaRef])
 
   return (
     <AudioPlayerContext.Provider
@@ -182,11 +173,10 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
         onEndHandler,
         isLoaded,
         setIsLoaded,
-      }}
-    >
+      }}>
       <audio
         ref={mediaRef}
-        src={currentTrack ? currentTrack?.audioSrc : ""}
+        src={currentTrack ? currentTrack?.audioSrc : ''}
         loop={false}
         preload="auto"
         autoPlay={true}
@@ -196,17 +186,16 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
         onPause={pauseHandler}
         onTimeUpdate={timeUpdateHandler}
         onLoadedData={loadedHandler}
-        onEnded={onEndHandler}
-      >
+        onEnded={onEndHandler}>
         Your browser does not support the <code>audio</code> element.
       </audio>
 
       {children}
     </AudioPlayerContext.Provider>
-  );
-};
+  )
+}
 
 export function usePlayerContext() {
-  const playerContext = useContext(AudioPlayerContext);
-  return playerContext;
+  const playerContext = React.useContext(AudioPlayerContext)
+  return playerContext
 }

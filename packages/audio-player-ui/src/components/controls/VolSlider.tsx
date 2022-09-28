@@ -1,7 +1,10 @@
+// @ts-ignore:next-line
+import * as React from 'react'
+
 interface VolControlsProps {
-  isMuted: boolean;
-  volume: number;
-  handleVolume: Function;
+  isMuted: boolean
+  volume: number
+  handleVolume: Function
 }
 
 export const VolSlider = ({ volume, handleVolume }: VolControlsProps) => {
@@ -12,8 +15,8 @@ export const VolSlider = ({ volume, handleVolume }: VolControlsProps) => {
       max={1}
       step={0.01}
       value={volume}
-      className="cursor-pointer w-20 hidden sm:block"
+      className="pa-audio-player__volume-slider hidden w-20 cursor-pointer sm:block"
       onChange={(e) => handleVolume(e as any)}
     />
-  );
-};
+  )
+}
