@@ -1,3 +1,6 @@
+// @ts-ignore:next-line
+import * as React from 'react'
+
 interface ProgressBarProps {
   duration: number
   progress: number

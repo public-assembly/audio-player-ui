@@ -1,5 +1,8 @@
+// @ts-ignore:next-line
+import * as React from 'react'
+
 import { BiSkipNext } from 'react-icons/bi'
-import { usePlayerContext } from '../../../../context/AudioPlayerContext'
+import { usePlayerContext } from '../../context/AudioPlayerContext'
 
 export const Next = ({ nextSong }: any) => {
   const { playlist } = usePlayerContext()

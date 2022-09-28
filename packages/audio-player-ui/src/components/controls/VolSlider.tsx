@@ -1,3 +1,6 @@
+// @ts-ignore:next-line
+import * as React from 'react'
+
 interface VolControlsProps {
   isMuted: boolean
   volume: number
