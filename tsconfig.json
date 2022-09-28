@@ -17,13 +17,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "strictNullChecks": true,
-    "target": "es2021",
+    "strictNullChecks": false,
+    "target": "es2021"
   },
-  "exclude": [
-    "node_modules",
-    "**/dist/**",
-    "**/node_modules/**"
-  ],
+  "exclude": ["node_modules", "**/dist/**", "**/node_modules/**"],
   "include": ["packages/**/*"]
 }

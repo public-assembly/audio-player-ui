@@ -1,23 +1,27 @@
 {
   "name": "@public-assembly/audio-player-ui",
-  "version": "0.0.0",
-  "description": "testing audio player package",
+  "version": "0.0.4",
+  "description": "Audio player package",
   "main": "dist/public-assembly-audio-player-ui.cjs.js",
   "module": "dist/public-assembly-audio-player-ui.esm.js",
   "author": "javvvs.eth",
   "license": "MIT",
-  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/public-assembly/audio-player-ui.git",
+    "directory": "packages/audio-player-ui"
+  },
   "files": [
     "/dist"
   ],
-  "dependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
   "peerDependencies": {
     "@public-assembly/zora-drops-utils": "^0.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.4.0"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
