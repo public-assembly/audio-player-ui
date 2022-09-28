@@ -2563,6 +2563,11 @@
   resolved "https://registry.yarnpkg.com/@public-assembly/zora-drops-utils/-/zora-drops-utils-0.0.3.tgz#70b3040a293d17b819069cb0e9d42e0b4072aba8"
   integrity sha512-WQts66LNHTs+edpAxZxj7/5na831GJwytlAge5uoHZPsWm3RqFh1iJwYat+Wu+nqjfIXP/stJQo9VKXXBJ04XA==
 
+"@public-assembly/zora-drops-utils@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@public-assembly/zora-drops-utils/-/zora-drops-utils-0.0.5.tgz#b21132e6aa0c8d4e185dab1876efaff8cd850e17"
+  integrity sha512-DIT8ZW1+51iJ5liC7Coas67+cx4nxQmq8LyAqptBx84bG2VcWjAp0ha06YyLiVM4OctYsMjHVPKPcmvP1UTtfA==
+
 "@rainbow-me/rainbowkit@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@rainbow-me/rainbowkit/-/rainbowkit-0.6.0.tgz#3d07d9663d6c229375025f1370b670edd2faeb68"

@@ -1,10 +1,10 @@
-import { AudioPlayer } from "@public-assembly/audio-player-ui";
-import { fakePlaylist } from "../fakePlaylist";
-import { useState } from "react";
-import { RawDisplayer } from "../components";
+import { EditionsAudioPlayer } from "@public-assembly/audio-player-ui";
 
 function Page() {
-  const [nft, setNFT] = useState(fakePlaylist[0]);
+  const TEST_CONTRACTS = [
+    '0xb7a791c3b5a0aa833e638250f982ebd29194f02c',
+    '0x674fb9ed86b847db9aee0a19e9055d5d2c0e6cc4',
+  ]
   
   return (
     <section className="flex flex-col gap-4">
@@ -12,17 +12,9 @@ function Page() {
         <h1 className="text-xl mb-4">Consuming Curation Playlist</h1>
         <hr className="border border-b-0 border-dashed"/>
       </div>
-      <RawDisplayer data={fakePlaylist} />
-      {fakePlaylist.map((nft) => (
-        <div
-          key={nft.id}
-          className=" p-3 border cursor-pointer mb-4"
-          onClick={() => setNFT(nft)}
-        >
-          {nft.artist} - {nft.title}
-        </div>
-      ))}
-      <AudioPlayer playlist={fakePlaylist} nft={nft} />
+      <EditionsAudioPlayer
+        contractAddresses={TEST_CONTRACTS}
+      />
     </section>
   );
 }
