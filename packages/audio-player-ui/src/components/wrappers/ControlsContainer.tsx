@@ -1,10 +1,8 @@
-import { PlayToggle } from "../../controls/PlayToggle/PlayToggle";
-import { ProgressBar } from "../../controls/ProgressBar/ProgressBar";
-import { Prev } from "../../controls/PrevNext/Prev";
-import { Next } from "../../controls/PrevNext/Next";
-import { VolControls } from "../../controls/VolControls";
-import { VolSlider } from "../../controls/VolSlider";
-import { usePlayerContext } from "../../../../context/AudioPlayerContext";
+// @ts-ignore:next-line
+import * as React from 'react'
+
+import { PlayToggle, ProgressBar, Prev, Next, VolControls, VolSlider } from '../controls'
+import { usePlayerContext } from '../../context/AudioPlayerContext'
 
 export const ControlsContainer = () => {
   const {
@@ -21,11 +19,11 @@ export const ControlsContainer = () => {
     prevSong,
     volume,
     handleVolume,
-  } = usePlayerContext();
+  } = usePlayerContext()
   return (
-    <div className="col-span-6 lg:col-span-10">
-      <div className="flex justify-between items-center w-[100%]">
-        <div className="flex items-center gap-2">
+    <div className="pa-audio-player__controls col-span-6 lg:col-span-10">
+      <div className="pa-audio-player__controls-wrapper flex w-[100%] items-center justify-between">
+        <div className="pa-audio-player__controls-play-pause-prev-next flex items-center gap-2">
           <Prev prevSong={prevSong} />
           <PlayToggle
             pausePlayHandler={pausePlayHandler}
@@ -41,12 +39,8 @@ export const ControlsContainer = () => {
           handleProgress={handleProgress}
         />
         <VolControls isMuted={isMuted} toggleMute={toggleMute} />
-        <VolSlider
-          isMuted={isMuted}
-          volume={volume}
-          handleVolume={handleVolume}
-        />
+        <VolSlider isMuted={isMuted} volume={volume} handleVolume={handleVolume} />
       </div>
     </div>
-  );
-};
+  )
+}
