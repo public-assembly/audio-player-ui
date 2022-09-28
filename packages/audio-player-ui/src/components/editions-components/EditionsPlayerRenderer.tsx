@@ -11,18 +11,25 @@ export function EditionsPlayerRenderer() {
   const { data } = useDropsContextProvider()
 
   const formattedPlaylist = React.useMemo(() => {
-    return (
+    const tracks =
       data &&
-      data.map((track: any) => {
-        return {
-          id: track.address,
-          artist: track.creator,
-          title: track.name,
-          image: addIPFSGateway(track.editionMetadata.imageURI),
-          audioSrc: addIPFSGateway(track.editionMetadata.animationURI),
-        }
-      })
-    )
+      /* @ts-ignore */
+      data
+        ?.filter((item) => item !== undefined)
+        .map((track: any) => {
+          try {
+            return {
+              id: track.address,
+              artist: track.creator,
+              title: track.name,
+              image: addIPFSGateway(track.editionMetadata.imageURI),
+              audioSrc: addIPFSGateway(track.editionMetadata.animationURI),
+            }
+          } catch (err) {
+            console.log(err)
+          }
+        })
+    return tracks
   }, [data])
 
   const nft = React.useMemo(() => {
