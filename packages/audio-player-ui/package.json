@@ -16,6 +16,7 @@
   ],
   "peerDependencies": {
     "@public-assembly/zora-drops-utils": "^0.0.6",
+    "ethers": "^5.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.4.0",
