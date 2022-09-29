@@ -8,9 +8,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rimraf --no-glob .next node_modules"
   },
   "dependencies": {
+    "@public-assembly/zora-drops-utils": "^0.0.6",
     "@rainbow-me/rainbowkit": "^0.6.0",
     "@zoralabs/nft-hooks": "^1.1.9",
     "@zoralabs/zdk": "^2.1.8",

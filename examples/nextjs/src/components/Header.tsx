@@ -1,9 +1,10 @@
 import { ConnectButton } from './ConnectButton'
+import { Navigation } from './Navigation'
 
 export function Header() {
   return (
-    <header className="flex w-full flex-row items-center justify-between border-b border-dashed border-gray-200 px-4">
-      <span className="text-2xl">Header</span>
+    <header className="flex flex-row justify-between items-center w-full px-4 border-b border-gray-200 border-dashed">
+      <Navigation />
       <ConnectButton />
     </header>
   )
