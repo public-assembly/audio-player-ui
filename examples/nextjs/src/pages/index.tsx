@@ -1,4 +1,3 @@
-
 import { EditionsAudioPlayer } from "@public-assembly/audio-player-ui";
 import { useContractRead } from 'wagmi'
 import Contract from './../abi/CurationManager.json'
