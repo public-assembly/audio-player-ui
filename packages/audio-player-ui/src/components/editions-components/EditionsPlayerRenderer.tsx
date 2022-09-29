@@ -13,8 +13,8 @@ export function EditionsPlayerRenderer() {
   const formattedPlaylist = React.useMemo(() => {
     const tracks =
       data &&
-      /* @ts-ignore */
       data
+        /* @ts-ignore */
         ?.filter((item) => item !== undefined)
         .map((track: any) => {
           try {
