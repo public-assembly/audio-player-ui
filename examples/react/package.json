@@ -7,7 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "clean": "rimraf --no-glob dist node_modules"
   },
   "dependencies": {
     "@public-assembly/zora-drops-utils": "^0.0.3",
