@@ -7,17 +7,19 @@ export function EditionsAudioPlayer({
   contractAddresses,
   networkId = '1',
   refreshInterval = 0,
+  nftId = 0,
 }: {
   contractAddresses: string[]
   networkId?: '1' | '5'
   refreshInterval?: number
+  nftId?: number
 }) {
   return (
     <DropsContextProvider
       contractAddresses={contractAddresses}
       refreshInterval={refreshInterval}
       networkId={networkId}>
-      <EditionsPlayerRenderer />
+      <EditionsPlayerRenderer nftId={nftId} />
     </DropsContextProvider>
   )
 }
