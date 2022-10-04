@@ -1,7 +1,7 @@
 // @ts-ignore:next-line
 import * as React from 'react'
 
-import { PlayToggle, ProgressBar, Prev, Next, VolControls, VolSlider } from '../controls'
+import { PlayToggle, ProgressBar, Prev, Next, VolControls } from '../controls'
 import { usePlayerContext } from '../../context/AudioPlayerContext'
 
 export const ControlsContainer = () => {
@@ -21,7 +21,7 @@ export const ControlsContainer = () => {
     handleVolume,
   } = usePlayerContext()
   return (
-    <div className="pa-audio-player__controls col-span-6 lg:col-span-10">
+    <div className="pa-audio-player__controls col-span-6 lg:col-span-10 ">
       <div className="pa-audio-player__controls-wrapper flex w-[100%] items-center justify-between">
         <div className="pa-audio-player__controls-play-pause-prev-next flex items-center gap-2">
           <Prev prevSong={prevSong} />
@@ -38,8 +38,12 @@ export const ControlsContainer = () => {
           progress={progress}
           handleProgress={handleProgress}
         />
-        <VolControls isMuted={isMuted} toggleMute={toggleMute} />
-        <VolSlider isMuted={isMuted} volume={volume} handleVolume={handleVolume} />
+        <VolControls
+          isMuted={isMuted}
+          toggleMute={toggleMute}
+          volume={volume}
+          handleVolume={handleVolume}
+        />
       </div>
     </div>
   )

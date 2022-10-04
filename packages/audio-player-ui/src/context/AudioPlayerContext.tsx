@@ -18,6 +18,7 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
   const [isLoaded, setIsLoaded] = React.useState(false)
   const [duration, setDuration] = React.useState(0)
   const [progress, setProgress] = React.useState(0)
+  const [lastVolume, setLastVolume] = React.useState(0.75)
   const [volume, setVolume] = React.useState(0.75)
   const [playlist, setPlaylist] = React.useState(pl)
   const [currentTrack, setCurrentTrack] = React.useState(playlist[0])
@@ -133,7 +134,7 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
       setVolume(0)
     } else setVolume(0.75)
     if (volume === 0 && isMuted && mediaRef.current) {
-      mediaRef.current.volume = 0.75
+      mediaRef.current.volume = lastVolume
     }
   }, [isMuted, setIsMuted])
 
@@ -152,6 +153,8 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
         setIsMuted,
         volume,
         setVolume,
+        lastVolume,
+        setLastVolume,
         progress,
         setProgress,
         duration,

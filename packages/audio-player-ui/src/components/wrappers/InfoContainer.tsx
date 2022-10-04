@@ -23,14 +23,12 @@ export const AudioPlayerDisplayInfo = () => {
   }, [isValidAddress, ensName, currentTrack?.artist])
 
   return (
-    <div className="pa-audio-player__info-container col-span-2 ">
-      <div className="pa-audio-player__info-container-items flex items-center">
-        <span className="pa-audio-player__info-container-artist">{artistName}</span>
-        <span className="pa-audio-player__info-container-hyphen mx-1">-</span>
-        <span className="pa-audio-player__info-container-title truncate">
-          {currentTrack?.title}
-        </span>
-      </div>
+    <div className="pa-audio-player__info-container-items col-span-2 flex items-center">
+      <span className="pa-audio-player__info-container-artist">{artistName}</span>
+      <span className="pa-audio-player__info-container-hyphen mx-1">-</span>
+      <span className="pa-audio-player__info-container-title truncate">
+        {currentTrack?.title}
+      </span>
     </div>
   )
 }
