@@ -2558,15 +2558,10 @@
     pirates "^4.0.1"
     source-map-support "^0.5.16"
 
-"@public-assembly/zora-drops-utils@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@public-assembly/zora-drops-utils/-/zora-drops-utils-0.0.3.tgz#70b3040a293d17b819069cb0e9d42e0b4072aba8"
-  integrity sha512-WQts66LNHTs+edpAxZxj7/5na831GJwytlAge5uoHZPsWm3RqFh1iJwYat+Wu+nqjfIXP/stJQo9VKXXBJ04XA==
-
-"@public-assembly/zora-drops-utils@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@public-assembly/zora-drops-utils/-/zora-drops-utils-0.0.6.tgz#8543081f0b2433439f9b7e3ee3a0ce01f870ad54"
-  integrity sha512-FA8D9EQo8j9gX1wyG3GUViiY37FGsfCEWHD9vkl7QAhCsGTW4YRNXA1MybIIQUkSDVlceuAPDG4qNZqS0w6ZHA==
+"@public-assembly/zora-drops-utils@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@public-assembly/zora-drops-utils/-/zora-drops-utils-0.1.0.tgz#4cec0af65a34cee1124a76c6c0508958bc9cc9c5"
+  integrity sha512-5yf55X7WK0X/kD8ZrCpHKI6qH6WvVac+2VdgAVxmWztlflYRqALiObspnJXC/t0cNwWY7kKfGtewRPZiyHkGMg==
 
 "@rainbow-me/rainbowkit@^0.6.0":
   version "0.6.0"
