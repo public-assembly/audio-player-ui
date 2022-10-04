@@ -5,15 +5,18 @@ import { EditionsPlayerRenderer } from './editions-components/EditionsPlayerRend
 
 export function EditionsAudioPlayer({
   contractAddresses,
+  networkId = '1',
   refreshInterval = 0,
 }: {
   contractAddresses: string[]
+  networkId?: '1' | '5'
   refreshInterval?: number
 }) {
   return (
     <DropsContextProvider
       contractAddresses={contractAddresses}
-      refreshInterval={refreshInterval}>
+      refreshInterval={refreshInterval}
+      networkId={networkId}>
       <EditionsPlayerRenderer />
     </DropsContextProvider>
   )
