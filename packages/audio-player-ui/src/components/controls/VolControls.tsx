@@ -25,6 +25,7 @@ export const VolControls = ({
         aria-label="volume">
         {isHovered ? (
           <svg
+            className="pa-audio-player__volume-icon--hovered"
             onClick={toggleMute}
             width="24"
             height="24"
@@ -50,6 +51,7 @@ export const VolControls = ({
           </svg>
         ) : (
           <svg
+            className="pa-audio-player__volume-icon"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -95,6 +97,7 @@ export const VolControls = ({
         }`}
         aria-label="muted">
         <svg
+          className="pa-audio-player__volume-icon--muted"
           width="24"
           height="24"
           viewBox="0 0 24 24"

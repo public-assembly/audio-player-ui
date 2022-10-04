@@ -21,6 +21,7 @@ export const PlayToggle = ({ pausePlayHandler, playing }: PlayToggleProps) => {
         }`}>
         {isPlayHovered ? (
           <svg
+            className="pa-audio-player__play-icon--hovered"
             width="40"
             height="40"
             viewBox="0 0 40 40"
@@ -31,6 +32,7 @@ export const PlayToggle = ({ pausePlayHandler, playing }: PlayToggleProps) => {
           </svg>
         ) : (
           <svg
+            className="pa-audio-player__play-icon"
             width="40"
             height="40"
             viewBox="0 0 40 40"
@@ -54,6 +56,7 @@ export const PlayToggle = ({ pausePlayHandler, playing }: PlayToggleProps) => {
           playing ? 'inline-block' : 'hidden'
         }`}>
         <svg
+          className="pa-audio-player__pause-icon"
           width="40"
           height="40"
           viewBox="0 0 40 40"

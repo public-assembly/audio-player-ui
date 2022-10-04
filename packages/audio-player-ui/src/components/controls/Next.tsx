@@ -17,6 +17,7 @@ export const Next = ({ nextSong }: any) => {
       onMouseLeave={() => setIsHovered(false)}>
       {isHovered ? (
         <svg
+          className="pa-audio-player__next-icon--hovered"
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -34,6 +35,7 @@ export const Next = ({ nextSong }: any) => {
         </svg>
       ) : (
         <svg
+          className="pa-audio-player__next-icon"
           width="24"
           height="24"
           viewBox="0 0 24 24"
