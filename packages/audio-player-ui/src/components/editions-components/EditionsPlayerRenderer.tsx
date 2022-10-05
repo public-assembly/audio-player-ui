@@ -7,7 +7,7 @@ import {
 import { PlayerWrapper, ControlsContainer, AudioPlayerDisplayInfo } from './../wrappers'
 import { AudioPlayerContextProvider } from '../../context/AudioPlayerContext'
 
-export function EditionsPlayerRenderer() {
+export function EditionsPlayerRenderer({ nftId = 0 }: { nftId?: number }) {
   const { data } = useDropsContextProvider()
 
   const formattedPlaylist = React.useMemo(() => {
@@ -33,8 +33,8 @@ export function EditionsPlayerRenderer() {
   }, [data])
 
   const nft = React.useMemo(() => {
-    return formattedPlaylist && formattedPlaylist[0]
-  }, [formattedPlaylist])
+    return formattedPlaylist && formattedPlaylist[nftId]
+  }, [formattedPlaylist, nftId])
 
   if (!formattedPlaylist) return null
 
