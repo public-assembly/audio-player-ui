@@ -3,6 +3,8 @@ export type AudioPlayerContextType = {
   setPlaying: (isPlaying: boolean) => void
   isMuted: boolean
   setIsMuted: (isMuted: boolean) => void
+  lastVolume: number
+  setLastVolume: (lastVolume: number) => void
   volume: number
   setVolume: (volume: number) => void
   progress: number
