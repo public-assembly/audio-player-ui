@@ -1,6 +1,6 @@
 {
   "name": "@public-assembly/audio-player-ui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Audio player package",
   "main": "dist/public-assembly-audio-player-ui.cjs.js",
   "module": "dist/public-assembly-audio-player-ui.esm.js",
@@ -15,7 +15,7 @@
     "/dist"
   ],
   "peerDependencies": {
-    "@public-assembly/zora-drops-utils": "^0.0.6",
+    "@public-assembly/zora-drops-utils": "^0.1.0",
     "ethers": "^5.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
