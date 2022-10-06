@@ -1,11 +1,27 @@
 import { AudioPlayer } from "@public-assembly/audio-player-ui";
 import { fakePlaylist } from "../fakePlaylist";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { RawDisplayer } from "../components";
 
 function MockPlaylistPage() {
   const [nft, setNFT] = useState(fakePlaylist[0]);
   
+  const onPlay = useCallback(() => {
+    console.log('Play')
+  }, [])
+
+  const onPause = useCallback(() => {
+    console.log('Pause')
+  }, [])
+
+  const onNext = useCallback(() => {
+    console.log('Next')
+  }, [])
+
+  const onPrevious = useCallback(() => {
+    console.log('Previous')
+  }, [])
+
   return (
     <section className="flex flex-col gap-4">
       <div>
@@ -22,7 +38,14 @@ function MockPlaylistPage() {
           {nft.artist} - {nft.title}
         </div>
       ))}
-      <AudioPlayer playlist={fakePlaylist} nft={nft} />
+      <AudioPlayer
+        playlist={fakePlaylist}
+        nft={nft}
+        playHandlerCallback={onPlay}
+        pauseHandlerCallback={onPause}
+        nextHandlerCallback={() => onNext()}
+        prevHandlerCallback={onPrevious}
+      />
     </section>
   );
 }

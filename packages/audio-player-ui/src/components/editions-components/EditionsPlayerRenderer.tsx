@@ -6,8 +6,17 @@ import {
 
 import { PlayerWrapper, ControlsContainer, AudioPlayerDisplayInfo } from './../wrappers'
 import { AudioPlayerContextProvider } from '../../context/AudioPlayerContext'
+import { AudioPlayerCallbacks } from '../../types/AudioPlayerContextType'
 
-export function EditionsPlayerRenderer({ nftId = 0 }: { nftId?: number }) {
+export function EditionsPlayerRenderer({
+  nftId = 0,
+  playHandlerCallback,
+  pauseHandlerCallback,
+  nextHandlerCallback,
+  prevHandlerCallback,
+}: {
+  nftId?: number
+} & AudioPlayerCallbacks) {
   const { data } = useDropsContextProvider()
 
   const formattedPlaylist = React.useMemo(() => {
@@ -39,7 +48,13 @@ export function EditionsPlayerRenderer({ nftId = 0 }: { nftId?: number }) {
   if (!formattedPlaylist) return null
 
   return (
-    <AudioPlayerContextProvider pl={formattedPlaylist} nft={nft}>
+    <AudioPlayerContextProvider
+      pl={formattedPlaylist}
+      nft={nft}
+      playHandlerCallback={playHandlerCallback}
+      pauseHandlerCallback={pauseHandlerCallback}
+      nextHandlerCallback={nextHandlerCallback}
+      prevHandlerCallback={prevHandlerCallback}>
       <PlayerWrapper>
         <AudioPlayerDisplayInfo />
         <ControlsContainer />

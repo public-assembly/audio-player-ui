@@ -1,17 +1,35 @@
 import * as React from 'react'
-
 import { AudioPlayerContextType } from '../types/AudioPlayerContextType'
 
-interface props {
+export type PlayerContextProps = {
   children: JSX.Element | JSX.Element[]
-  pl: any
+  pl: any[]
   nft: any
+  playHandlerCallback?: () => void
+  pauseHandlerCallback?: () => void
+  nextHandlerCallback?: () => void
+  prevHandlerCallback?: () => void
 }
+
 export const AudioPlayerContext = React.createContext<AudioPlayerContextType>(
   {} as AudioPlayerContextType
 )
 
-export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
+export const AudioPlayerContextProvider = ({
+  children,
+  pl,
+  nft,
+  playHandlerCallback = () => {
+    console.log('play')
+  },
+  pauseHandlerCallback = () => {
+    console.log('pause')
+  },
+  nextHandlerCallback = () => {},
+  prevHandlerCallback = () => {
+    console.log('prev')
+  },
+}: PlayerContextProps) => {
   //STATE
   const [playing, setPlaying] = React.useState(false)
   const [isMuted, setIsMuted] = React.useState(false)
@@ -49,10 +67,12 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
 
   const playHandler = React.useCallback(() => {
     setPlaying(true)
-  }, [playing, setPlaying])
+    playHandlerCallback()
+  }, [playing, setPlaying, playHandlerCallback])
 
   const pauseHandler = React.useCallback(() => {
     setPlaying(false)
+    pauseHandlerCallback()
   }, [playing, setPlaying])
 
   const nextSong = React.useCallback(() => {
@@ -65,7 +85,9 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
     } else {
       setCurrentTrack(playlist[nextIndex])
     }
-  }, [mediaRef.current, currentTrack])
+    console.log('next song')
+    nextHandlerCallback
+  }, [mediaRef.current, currentTrack, nextHandlerCallback])
 
   const prevSong = React.useCallback(() => {
     if (!currentTrack) {
@@ -77,6 +99,7 @@ export const AudioPlayerContextProvider = ({ children, pl, nft }: props) => {
     } else {
       setCurrentTrack(playlist[prevIndex])
     }
+    prevHandlerCallback()
   }, [mediaRef.current, currentTrack])
 
   const onEndHandler = React.useCallback(() => {

@@ -29,3 +29,15 @@ export type AudioPlayerContextType = {
   isLoaded: boolean
   setIsLoaded: (isLoaded: boolean) => void
 }
+
+export type AudioPlayerCallbacks = {
+  playHandlerCallback?: () => void
+  pauseHandlerCallback?: () => void
+  nextHandlerCallback?: () => void
+  prevHandlerCallback?: () => void
+}
+
+export type AudioPlayerProps = {
+  playlist: any[]
+  nft: any
+} & AudioPlayerCallbacks
