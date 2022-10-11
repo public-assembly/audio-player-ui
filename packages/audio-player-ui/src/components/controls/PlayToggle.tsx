@@ -43,7 +43,7 @@ export const PlayToggle = ({ pausePlayHandler, playing }: PlayToggleProps) => {
               cy="20"
               r="19.5"
               fill="#F1F7F6"
-              fill-opacity="0.7"
+              fillOpacity="0.7"
               stroke="#050A09"
             />
             <path d="M14 12L30 19.9998L14 28V12Z" fill="#050A09" />

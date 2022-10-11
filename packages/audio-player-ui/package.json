@@ -1,6 +1,6 @@
 {
   "name": "@public-assembly/audio-player-ui",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Audio player package",
   "main": "dist/public-assembly-audio-player-ui.cjs.js",
   "module": "dist/public-assembly-audio-player-ui.esm.js",

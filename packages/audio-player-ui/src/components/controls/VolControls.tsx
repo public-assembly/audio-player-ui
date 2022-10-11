@@ -110,8 +110,8 @@ export const VolControls = ({
               fill="#ECF1F0"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M23.0763 15.9995L23.7631 15.3127L20.5652 12.1148L23.9927 8.6873L23.3059 8.00047L19.8784 11.428L16.4504 8L15.7636 8.68682L19.1916 12.1148L15.9932 15.3132L16.68 16L19.8784 12.8017L23.0763 15.9995Z"
               fill="#ECF1F0"
             />
