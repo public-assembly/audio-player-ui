@@ -15,7 +15,7 @@ export function EditionsPlayerRenderer({ nftId = 0 }: { nftId?: number }) {
       data &&
       data
         /* @ts-ignore */
-        ?.filter((item) => item !== undefined)
+        ?.filter((item) => !!item)
         .map((track: any) => {
           try {
             return {

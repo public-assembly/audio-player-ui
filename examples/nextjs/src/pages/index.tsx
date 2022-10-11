@@ -1,13 +1,87 @@
+
+import { useMemo } from "react";
 import { EditionsAudioPlayer } from "@public-assembly/audio-player-ui";
-import { useContractRead } from 'wagmi'
-import Contract from './../abi/CurationManager.json'
+import { useCurationFunctions } from "@public-assembly/curation-interactions";
+import { AddressZero } from '@ethersproject/constants'
 
 function Page() {
-  const { data } = useContractRead({
-    addressOrName: "0x6422Bf82Ab27F121a043d6DE88b55FA39e2ea292", 
-    contractInterface: Contract.abi,
-    functionName: 'viewAllListings',
+  const { getListingsReturn: playlistData } = useCurationFunctions({
+    curationContractAddress: '0x52a64dA96d0A0078bEAD9158198f3881c4FCD066'
   })
+
+  const playList = useMemo(() => {
+    function removeDuplicates(array: any, key: any) {
+      return [
+        ...new Map(
+          /* @ts-ignore */
+          array.map((x) => [key(x), x])
+        ).values()
+      ]
+    }
+    
+    const curationTargetTypes = {
+      '0': 'CURATION_TYPE_GENERIC',
+      '1': 'CURATION_TYPE_NFT_CONTRACT',
+      '2': 'CURATION_TYPE_CONTRACT',
+      '3': 'CURATION_TYPE_CURATION_CONTRACT',
+      '4': 'CURATION_TYPE_NFT_ITEM',
+      '5': 'CURATION_TYPE_WALLET',
+      '6': 'CURATION_TYPE_ZORA_EDITION',
+    }
+
+    function returnCurationType(key: keyof typeof curationTargetTypes) {
+      return curationTargetTypes[key]
+    }
+
+    if (playlistData) {
+      const allData = playlistData.map((entry) => {
+        // console.log(entry)
+        try {
+          return {
+            curatedAddress: entry['curatedAddress']?.toLowerCase(),
+            curationTargetType: returnCurationType(
+              entry['curationTargetType'].toString()
+            ),
+            hasTokenId: entry['hasTokenId'],
+            tokenId: entry['tokenId']?.toString(),
+            curator: entry['curator'],
+            sortOrder: entry['sortOrder'],
+            chainId: entry['chainId']?.toString(),
+          }
+        } catch (err) {
+          console.error(err)
+        }
+      })
+      try {
+        const removeZeroAddress = allData.filter(
+          (item) => item?.curatedAddress !== AddressZero && item?.curator !== AddressZero
+        )
+        const uniqeListings = removeDuplicates(
+          removeZeroAddress,
+          (item: any) => item.curatedAddress
+        )
+        return uniqeListings as any[]
+      } catch (err) {
+        console.error(err)
+        return []
+      }
+    } else {
+      return []
+    }
+  }, [playlistData])
+
+  const playListContracts = useMemo(() => {
+    if (playList.length) {
+      try {
+        const contracts = playList.map((item: any) => item?.curatedAddress?.toLowerCase())
+        return contracts
+      } catch (err) {
+        console.error(err)
+      }
+    } else {
+      return []
+    }
+  }, [playList])
 
   return (
     <section className="flex flex-col gap-4">
@@ -15,8 +89,8 @@ function Page() {
         <h1 className="text-xl mb-4">Consuming Curation Playlist</h1>
         <hr className="border border-b-0 border-dashed"/>
       </div>
-      {data && data.length && <EditionsAudioPlayer
-        contractAddresses={data as string[]}
+      {playListContracts.length && <EditionsAudioPlayer
+        contractAddresses={playListContracts as string[]}
       />}
     </section>
   );

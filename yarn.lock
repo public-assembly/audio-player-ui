@@ -2691,6 +2691,11 @@
     pirates "^4.0.1"
     source-map-support "^0.5.16"
 
+"@public-assembly/curation-interactions@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@public-assembly/curation-interactions/-/curation-interactions-0.0.17.tgz#820efea9980d8fd932ef1e3728f5f13c5f8fd938"
+  integrity sha512-rqV0dFYrrUpXCyTienkx5ojbqmEwNDYROz6/3yjJqmiobdMSjySwGa7Is0l0FRc1VWF2L8mU8IK4Bg9/LMhtWA==
+
 "@public-assembly/zora-drops-utils@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@public-assembly/zora-drops-utils/-/zora-drops-utils-0.1.0.tgz#4cec0af65a34cee1124a76c6c0508958bc9cc9c5"
